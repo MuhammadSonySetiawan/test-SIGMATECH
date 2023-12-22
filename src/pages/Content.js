@@ -13,7 +13,7 @@ function Content() {
             setNamaContent(res.data)
             setUserName(state.user.data);
           })
-          .catch((err) => console.log(err))
+          .catch((err) => console.log(err + "<<<<<<< Error"))
       }, []);
       
   return (
