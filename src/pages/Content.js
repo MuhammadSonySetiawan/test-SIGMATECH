@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import { useSelector } from "react-redux";
 function Content() {
+  const [userName, setUserName] = useState()
+  const state = useSelector((state) => state)
+
     const [namaContent, setNamaContent] = useState();
     useEffect(() => {
         axios
           .get(`http://universities.hipolabs.com/search?country=Indonesia`)
-          .then((res) => setNamaContent(res.data))
+          .then((res) => {
+            setNamaContent(res.data)
+            setUserName(state.user.data);
+          })
           .catch((err) => console.log(err))
       }, []);
+      
   return (
     <div className="container">
-      
-      <h1>Welcome, user</h1>
+      <h1>Welcome, {userName}</h1>
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -66,12 +72,12 @@ function Content() {
                             <td>{key + 1}</td>
                           </tr>
                           <tr>
-                            <th>Nama Universitas</th>
+                            <tr>Nama Universitas</tr>
                             <td>:</td>
                             <td> {item.name}</td>
                           </tr>
                           <tr>
-                            <th>Website</th>
+                            <tr>Website</tr>
                             <td>:</td>
                             <td>
                               <a
