@@ -10,9 +10,14 @@ const dummyUser = {
   const [password, setPassword] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
   const [namaContent, setNamaContent] = useState();
-
+  const [isLoading, setIsLoading] = useState(false);
+  
   const handleLogin = () => {
     if (username === dummyUser.username && password === dummyUser.password) {
+      axios
+        .get(`http://universities.hipolabs.com/search?country=Indonesia`)
+        .then((res) => setNamaContent(res.data))
+        .catch((err) => console.log(err));
       setLoggedIn(true);
       alert("Login successful!");
     } else {
@@ -21,16 +26,13 @@ const dummyUser = {
   };
 
    useEffect(() => {
-    // const fetchData = async() => {
-      // setTimeout(async() => {
-        axios
-          .get(`http://universities.hipolabs.com/search?country=Indonesia`)
-          .then((res) => setNamaContent(res.data))
-          .catch((err) => console.log(err));
-      // }, 7000)
-    // }
-     
-    // fetchData()
+        // axios
+        //   .get(`http://universities.hipolabs.com/search?country=Indonesia`)
+        //   .then((res) => setNamaContent(res.data))
+        //   .catch((err) => console.log(err))
+        //   .finally(()=>{
+        //     // isLoading(false)
+        //   })
    }, []);
 
   const handleLogout = () => {
