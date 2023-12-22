@@ -19,7 +19,7 @@ function Content() {
       
   return (
     <div className="container">
-      <h1>Welcome,user
+      <h1>Welcome, user
        {/* {userName} */}
       </h1>
       <table class="table table-bordered">
