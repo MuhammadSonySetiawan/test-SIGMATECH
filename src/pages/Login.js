@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { useDispatch } from "react-redux";
-// import { dataUser } from "../features/counter/userSlice";
+import { useDispatch } from "react-redux";
+import { dataUser } from "../features/counter/userSlice";
 
 const dummyUser = {
   username: "user",
@@ -13,11 +13,11 @@ const dummyUser = {
   const [password, setPassword] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
   const navigate = useNavigate()
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   
   const handleLogin = () => {
     if (username === dummyUser.username && password === dummyUser.password) {
-      // dispatch(dataUser(dummyUser.username));
+      dispatch(dataUser(dummyUser.username));
       setLoggedIn(true);
       alert("Login successful!");
     } else {
