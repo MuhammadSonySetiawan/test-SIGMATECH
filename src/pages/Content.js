@@ -1,24 +1,27 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 function Content() {
-  const [userName, setUserName] = useState()
-  const state = useSelector((state) => state)
+  // const [userName, setUserName] = useState()
+  // const state = useSelector((state) => state)
 
     const [namaContent, setNamaContent] = useState();
     useEffect(() => {
         axios
           .get(`http://universities.hipolabs.com/search?country=Indonesia`)
           .then((res) => {
+            // setUserName(state?.user?.data);
             setNamaContent(res.data)
-            setUserName(state.user.data);
+            
           })
           .catch((err) => console.log(err + "<<<<<<< Error"))
       }, []);
       
   return (
     <div className="container">
-      <h1>Welcome, {userName}</h1>
+      <h1>Welcome,user
+       {/* {userName} */}
+      </h1>
       <table class="table table-bordered">
         <thead>
           <tr>
