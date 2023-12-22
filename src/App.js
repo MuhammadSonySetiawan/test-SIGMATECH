@@ -1,18 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import Home from "./pages/Home";
-import Content from "./pages/Content"
+import Login from "./pages/Login";
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/content",
-    element: <Content />,
+    element: <Login />,
   },
 ]);
 
