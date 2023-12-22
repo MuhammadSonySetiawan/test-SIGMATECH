@@ -32,7 +32,7 @@ const dummyUser = {
   return (
     <div className="App">
       {loggedIn ? (
-        navigate(`/Login/list/${username}`)
+        navigate(`/content`)
       ) : (
         <div className="d-flex justify-content-center align-items-center">
           {/* <table class="table">
