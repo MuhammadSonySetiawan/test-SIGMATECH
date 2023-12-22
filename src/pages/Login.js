@@ -47,7 +47,7 @@ const dummyUser = {
 
   return (
     <div className="App">
-      {loggedIn ? (
+      {loggedIn && namaContent ? (
         <>
           {/* {isLoading === true ? (
             "Loading..."
