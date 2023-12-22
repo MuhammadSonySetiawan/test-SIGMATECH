@@ -5,7 +5,7 @@ const dummyUser = {
   password: "123",
 };
 
-function App() {
+ function App() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
@@ -21,12 +21,18 @@ function App() {
   };
 
    useEffect(() => {
-     axios
-       .get(`http://universities.hipolabs.com/search?country=Indonesia`)
-       .then((res) => setNamaContent(res.data))
-       .catch((err) => console.log(err));
+    const fetchData = async() => {
+      setTimeout(async() => {
+        axios
+          .get(`http://universities.hipolabs.com/search?country=Indonesia`)
+          .then((res) => setNamaContent(res.data))
+          .catch((err) => console.log(err));
+      }, 7000)
+    }
+     
+    fetchData()
    }, []);
-
+   
   const handleLogout = () => {
     setLoggedIn(false);
     setUsername("");
