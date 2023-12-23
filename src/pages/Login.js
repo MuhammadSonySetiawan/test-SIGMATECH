@@ -26,8 +26,11 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <div className="d-flex flex-column justify-content-center align-items-center">
+    <div
+      className="App container d-flex flex-column justify-content-center align-items-center"
+      style={{ marginTop: "25vh" }}
+    >
+      <div className="d-flex flex-column justify-content-center align-items-center border border-2 w-70 p-3 rounded-2">
         <h2>Login</h2>
         <div>
           <label>
@@ -53,7 +56,10 @@ function App() {
           </label>
         </div>
         <br />
-        <button onClick={handleLogin}>Sign In</button>
+        <button className="rounded-2" onClick={handleLogin}>
+          Sign In
+          
+        </button>
       </div>
     </div>
   );
