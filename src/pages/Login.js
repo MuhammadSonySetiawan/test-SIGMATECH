@@ -11,14 +11,15 @@ const dummyUser = {
  function App() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [loggedIn, setLoggedIn] = useState(false);
+  // const [loggedIn, setLoggedIn] = useState(false);
   const navigate = useNavigate()
   const dispatch = useDispatch();
   
   const handleLogin = () => {
     if (username === dummyUser.username && password === dummyUser.password) {
       dispatch(dataUser(dummyUser.username));
-      setLoggedIn(true);
+      navigate(`/content`);
+      // setLoggedIn(true);
       alert("Login successful!");
     } else {
       alert("Invalid username or password");
@@ -28,67 +29,40 @@ const dummyUser = {
 
   return (
     <div className="App">
-      {loggedIn ? (
+      {/* {loggedIn ? (
         navigate(`/content`)
-      ) : (
-        <div className="d-flex justify-content-center align-items-center">
-          {/* <table class="table">
-            <tr>
-              <td>
-                <h2>Login</h2>
-              </td>
-            </tr>
-            <tr>
-              <td>Username:</td>
-              <td>
-                <input
-                  type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>Password:</td>
-              <td>
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <button onClick={handleLogin}>Login</button>
-              </td>
-            </tr>
-          </table> */}
-
-          <div>
-            <h2>Login</h2>
-            <label>
-              Username:
-              <input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-            </label>
-            <br />
-            <label>
-              Password:
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </label>
-            <br />
-            <button onClick={handleLogin}>Sign In</button>
-          </div>
+      ) : ( */}
+      <div className="d-flex flex-column justify-content-center align-items-center">
+        <h2>Login</h2>
+        <div>
+          <label>
+            Username:
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="mx-3 "
+            />
+          </label>
         </div>
-      )}
+
+        <br />
+        <div>
+          <label>
+            Password:
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="mx-3 "
+            />
+          </label>
+        </div>
+
+        <br />
+        <button onClick={handleLogin}>Sign In</button>
+      </div>
+      {/* )} */}
     </div>
   );
 }

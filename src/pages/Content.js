@@ -2,27 +2,32 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 function Content() {
-  const [userName, setUserName] = useState()
   const state = useSelector((state) => state)
+  const [userName, setUserName] = useState()
+  useEffect(()=>{
+    // setUserName(state?.user?.data)
+  },[])
 
+  // setUserName(state?.user?.data);
     const [namaContent, setNamaContent] = useState();
     useEffect(() => {
-        axios
-          .get(`http://universities.hipolabs.com/search?country=Indonesia`)
-          .then((res) => {
-            setUserName(state?.user?.data);
-            setNamaContent(res.data)
-            
-          })
-          .catch((err) => console.log(err + "<<<<<<< Error"))
-      }, []);
-      
+      axios
+      .get(`http://universities.hipolabs.com/search?country=Indonesia`)
+      .then((res) => {
+        setUserName(state?.user?.data);
+        setNamaContent(res.data)
+      })
+      .catch((err) => console.log(err + "<<<<<<< Error"))
+    }, [state]);
+    
+    
   return (
     <div className="container">
-      <h1>Welcome,  
+      <h1>
+        Welcome,
         {userName}
       </h1>
-      <table class="table table-bordered">
+      <table className="table table-bordered">
         <thead>
           <tr>
             <th scope="col">No.</th>
@@ -30,9 +35,11 @@ function Content() {
             <th scope="col">Website</th>
           </tr>
         </thead>
+       
         <tbody>
-          {namaContent?.map((item, key) => (
-            <tr key={key}>
+          {namaContent?.map((item, key) =>  {
+            return(
+              <tr key={key}>
               <td>{key + 1}</td>
               <td>
                 <button
@@ -48,27 +55,27 @@ function Content() {
 
                 {/* <!-- Modal --> */}
                 <div
-                  class="modal fade"
+                  className="modal fade"
                   id="exampleModal"
                   tabindex="-1"
                   aria-labelledby="exampleModalLabel"
                   aria-hidden="true"
                 >
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">
+                  <div className="modal-dialog">
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLabel">
                           Detail
                         </h5>
                         <button
                           type="button"
-                          class="btn-close"
+                          className="btn-close"
                           data-bs-dismiss="modal"
                           aria-label="Close"
                         ></button>
                       </div>
-                      <div class="modal-body">
-                        <table class="table">
+                      <div className="modal-body">
+                        <table className="table">
                           <tr>
                             <td>No. </td>
                             <td>:</td>
@@ -93,10 +100,10 @@ function Content() {
                           </tr>
                         </table>
                       </div>
-                      <div class="modal-footer">
+                      <div className="modal-footer">
                         <button
                           type="button"
-                          class="btn btn-secondary"
+                          className="btn btn-secondary"
                           data-bs-dismiss="modal"
                         >
                           Close
@@ -109,8 +116,11 @@ function Content() {
               </td>
               <td>{item.web_pages[0]}</td>
             </tr>
-          ))}
+            )
+          }
+          )}
         </tbody>
+        
       </table>
     </div>
   );
