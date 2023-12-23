@@ -8,13 +8,12 @@ const dummyUser = {
   password: "123",
 };
 
- function App() {
+function App() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  // const [loggedIn, setLoggedIn] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  
+
   const handleLogin = () => {
     if (username === dummyUser.username && password === dummyUser.password) {
       dispatch(dataUser(dummyUser.username));
@@ -26,12 +25,8 @@ const dummyUser = {
     }
   };
 
-
   return (
     <div className="App">
-      {/* {loggedIn ? (
-        navigate(`/content`)
-      ) : ( */}
       <div className="d-flex flex-column justify-content-center align-items-center">
         <h2>Login</h2>
         <div>
@@ -45,7 +40,6 @@ const dummyUser = {
             />
           </label>
         </div>
-
         <br />
         <div>
           <label>
@@ -58,11 +52,9 @@ const dummyUser = {
             />
           </label>
         </div>
-
         <br />
         <button onClick={handleLogin}>Sign In</button>
       </div>
-      {/* )} */}
     </div>
   );
 }
